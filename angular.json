@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "landing-page-com-ssr": {
+    "PageHub": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/landing-page-com-ssr",
+            "outputPath": "dist/PageHub",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "landing-page-com-ssr:build:production"
+              "buildTarget": "PageHub:build:production"
             },
             "development": {
-              "buildTarget": "landing-page-com-ssr:build:development"
+              "buildTarget": "PageHub:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "landing-page-com-ssr:build"
+            "buildTarget": "PageHub:build"
           }
         },
         "test": {
@@ -102,5 +102,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "9549879a-ddc9-4d8e-b282-a4b53f290432"
   }
 }

@@ -1,0 +1,15 @@
+<div class="{{spaceAbove}}"></div>
+<div [ngClass]="setClasses()">
+    <div class="flex flex-row items-center gap-1 {{brandMargin}}">
+        @if(containsBrand()) {
+        <div>
+            <img ngSrc="{{ brandImagePath }}" width="{{brandIconSize}}" height="{{brandIconSize}}"/>
+        </div>
+        <div>
+            {{ brandName }}
+        </div>
+        } 
+    </div>
+</div>
+
+<div class="{{spaceBelow}}"></div>

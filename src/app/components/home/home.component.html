@@ -1,0 +1,36 @@
+<body class="bg-bg_light text-tt_dark">
+    <pghub-navbar
+        hide="static"
+        spaceAbove="h-0"
+        tailwindArgs="items-center justify-start h-14 mx-0 rounded-none bg-primary font-brand text-lg text-tt_light"
+        spaceBelow="h-60"
+        [items]="['brand']"
+
+        brandName="pagehub"
+        brandMargin="mx-48"
+        brandIconSize="24"
+        
+    ></pghub-navbar>
+    <main class="mx-48 flex flex-col gap-60">
+        <pghub-apresentacao 
+        mainText="Desenvolvemos páginas para profissionais que buscam aumentar seu alcance!"
+        descriptionText="Transforme a maneira como você prospecta novos clientes"
+        buttonText="Quero uma Demonstração!"
+        buttonRadius="0px"
+        buttonFontSize="18px"
+        variant="side-image"></pghub-apresentacao>
+
+        <section class="feature1-section">
+            <div class="feature1-data">
+                <h2>75% dos clientes</h2>
+            </div>
+            <p>julgam a <b>credibilidade</b> dos serviços a eles oferecidos com base no design do website profissional. </p>
+        </section>
+        <section class="cta1-section">
+            
+        </section>
+
+        <pghub-form></pghub-form>
+
+    </main>
+</body>

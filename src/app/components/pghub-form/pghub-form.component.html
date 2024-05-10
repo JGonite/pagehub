@@ -1,0 +1,26 @@
+<section class="form-section ">
+    <div class="text">
+        <h3>
+             Receba a Newsletter e Promoções
+        </h3>
+        <p>Informe-nos seu nome e e-mail e saiba das novidades oferecidas pelo PageHub, bem como cupons e promoções com prazo determinado. Dentre os produtos estão novas funcionalidades sugeridas por nossos clientes que também podem ser adicionadas ao seu site pessoal em caso de interesse.</p>
+        <p>Saiba também das novidades da nossa sessão educacional, feita para te dar completa autonomia no desenvolvimento e gestão do seu site pessoal, de modo que você possa ficar livre de custos e taxas</p>
+    </div>
+    <div class="pghub-form">
+        <form [formGroup]="pghubForm">
+            <label for="name">Nome</label>
+            <input id="name" formControlName="name"/>
+            <label for="email">E-mail</label>
+            <input id="email" formControlName="email"/>
+        </form>
+        <div class="center-buttom">
+            <pghub-btn 
+            btn-text="inscreva-se" 
+            variant="secondary" 
+            (click)="submit()"
+            [disabled]="!pghubForm.valid"
+            [loading]="loading()">
+            </pghub-btn>
+        </div>
+    </div>
+</section>

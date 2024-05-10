@@ -1,0 +1,27 @@
+@import "../../../color-variables.scss";
+.btn {
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-family: 'Nunito';
+    border-radius: var(--border-radius, 0px);
+
+    &.primary {
+        color: $tt_light;
+        background: $primary;
+        font-size: var(--font-size, 24px);
+        font-weight: bold;
+    }
+
+    &.secondary {
+        color: $secondary-text;
+        background: -webkit-linear-gradient(180deg, $secondary-color, $light-secondary-color);
+        font-size: var(--font-size, 16px);
+        font-weight: bold;
+    }
+
+    &:disabled {
+        background: transparent;
+        opacity: 0.5;
+    }
+}
