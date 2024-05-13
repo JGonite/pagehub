@@ -2,7 +2,6 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 type NavBarHideType = 'static' | 'fixed' | 'dynamic';
-type ItemsType = 'brand';
 
 @Component({
   selector: 'pghub-navbar',
@@ -20,11 +19,11 @@ export class PghubNavbarComponent {
   @Input() tailwindArgs: string = "";
   @Input() spaceAbove: string = "h-0";
   @Input() spaceBelow: string = "h-48";
-  @Input() items: ItemsType[] = [];
+  @Input() items: string[] = [];
 
   //optional parameters:
   @Input() brandName: string = "";
-  @Input() brandMargin: string = "";
+  @Input() navItemsTailwindArgs: string = "";
   @Input() brandIconSize: string = "";
 
   brandImagePath: string = "./assets/iconeMarca.png";
@@ -37,13 +36,20 @@ export class PghubNavbarComponent {
 
   setClasses() : any {
     this.klasses["flex"] = true;
-    this.klasses["flex-row"] = true;
     this.klasses[this.tailwindArgs] = true;
     return this.klasses;
   }
 
-  containsBrand() {
-    return this.items.includes('brand');
+  isBrand(item : string) : boolean {
+    return item === 'brand';
+  }
+
+  containsSubmenu(item : string) : boolean {
+    return item.indexOf('[sub]') === 0;
+  }
+
+  getItemName(item : string) : string {
+    return item.replace('[sub]','');
   }
   
 }

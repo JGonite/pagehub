@@ -1,15 +1,33 @@
 <div class="{{spaceAbove}}"></div>
 <div [ngClass]="setClasses()">
-    <div class="flex flex-row items-center gap-1 {{brandMargin}}">
-        @if(containsBrand()) {
-        <div>
-            <img ngSrc="{{ brandImagePath }}" width="{{brandIconSize}}" height="{{brandIconSize}}"/>
-        </div>
-        <div>
-            {{ brandName }}
-        </div>
-        } 
-    </div>
+    <div class="flex flex-row items-center {{navItemsTailwindArgs}}">
+        @for (item of items; track item) {
+                @if(isBrand(item)) {
+                <div class="flex flex-row items-center gap-1">
+                    <div>
+                        <img ngSrc="{{ brandImagePath }}" width="{{brandIconSize}}" height="{{brandIconSize}}"/>
+                    </div>
+                    <div class="font-brand">
+                        {{ brandName }}
+                    </div>
+                </div>
+                } @else {
+                <div class="flex flex-row items-center">
+                    @if(containsSubmenu(item)) {
+                        {{ getItemName(item) }}
+                        <span class="material-symbols-outlined">
+                            arrow_drop_down
+                        </span>
+                    } @else {
+                        {{ getItemName(item) }}
+                        
+                    }
+                </div>
+                }
+        } @empty {
+
+        }
+    </div>  
 </div>
 
 <div class="{{spaceBelow}}"></div>
