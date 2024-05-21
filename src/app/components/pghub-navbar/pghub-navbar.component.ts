@@ -1,7 +1,8 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { PgHubNavObjectList, PghubNavObject } from '../interfaces/pghub-navbar.interface';
 
-type NavBarHideType = 'static' | 'fixed' | 'dynamic';
+type NavBarHideType = 'STATIC' | 'FIXED' | 'DYNAMIC';
 
 @Component({
   selector: 'pghub-navbar',
@@ -15,18 +16,17 @@ type NavBarHideType = 'static' | 'fixed' | 'dynamic';
 })
 export class PghubNavbarComponent {
 
-  @Input() hide: NavBarHideType = 'static';
-  @Input() tailwindArgs: string = "";
+  brandImagePath: string = "./assets/iconeMarca.png";
+
+  //Structural Variables:
+  @Input() hide: NavBarHideType = 'STATIC';
   @Input() spaceAbove: string = "h-0";
   @Input() spaceBelow: string = "h-48";
-  @Input() items: string[] = [];
+  @Input() navMainTailwindArgs: string = "";
+  @Input() navGridTailwindArgs: string = "";
 
-  //optional parameters:
-  @Input() brandName: string = "";
-  @Input() navItemsTailwindArgs: string = "";
-  @Input() brandIconSize: string = "";
-
-  brandImagePath: string = "./assets/iconeMarca.png";
+  //Content Variables:
+  @Input() navObjects: PghubNavObject[] = [];
 
 
   klasses : any = {};
@@ -34,22 +34,20 @@ export class PghubNavbarComponent {
   ngOnInit() : void {
   }
 
-  setClasses() : any {
-    this.klasses["flex"] = true;
-    this.klasses[this.tailwindArgs] = true;
-    return this.klasses;
+  isBrand(navObject : PghubNavObject) : boolean {
+    return navObject.deserializeType == 'BRAND';
   }
 
-  isBrand(item : string) : boolean {
-    return item === 'brand';
+  isList(navObject : PghubNavObject) : boolean {
+    return navObject.deserializeType == 'LIST';
   }
 
-  containsSubmenu(item : string) : boolean {
-    return item.indexOf('[sub]') === 0;
-  }
-
-  getItemName(item : string) : string {
-    return item.replace('[sub]','');
+  containsSubmenu(navObjectListContent : PgHubNavObjectList, item : string) : boolean {
+    if (navObjectListContent.subItems !== undefined && navObjectListContent.subItems[item] !== undefined) {
+      return (navObjectListContent.subItems[item].length > 0)
+    } else {
+      return false;
+    }
   }
   
 }

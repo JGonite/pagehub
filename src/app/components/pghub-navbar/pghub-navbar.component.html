@@ -1,33 +1,34 @@
 <div class="{{spaceAbove}}"></div>
-<div [ngClass]="setClasses()">
-    <div class="flex flex-row items-center {{navItemsTailwindArgs}}">
-        @for (item of items; track item) {
-                @if(isBrand(item)) {
-                <div class="flex flex-row items-center gap-1">
-                    <div>
-                        <img ngSrc="{{ brandImagePath }}" width="{{brandIconSize}}" height="{{brandIconSize}}"/>
-                    </div>
-                    <div class="font-brand">
-                        {{ brandName }}
-                    </div>
+<div class="flex flex-row {{navMainTailwindArgs}}">
+    <div class="grid grid-cols-{{navObjects.length}} w-full {{navGridTailwindArgs}}">
+    @for (navObject of navObjects; track navObject) {
+        <div class="{{navObject.tailwindArgs}}">
+            @if(isBrand(navObject)) {
+            <div class="gap-1">
+                <div>
+                    <img ngSrc="{{ brandImagePath }}" width="{{navObject.content.iconSize}}" height="{{navObject.content.iconSize}}"/>
                 </div>
+                <div class="font-brand">
+                    {{ navObject.content.name }}
+                </div>
+            </div>
+            }
+            @else if(isList(navObject)) {
+            <div class="">
+                @for (item of navObject.content.items; track item) {
+                @if(containsSubmenu(navObject.content, item)) {
+                {{ item }}
+                <span class="material-symbols-outlined text-primary-300">
+                    arrow_drop_down
+                </span>
                 } @else {
-                <div class="flex flex-row items-center">
-                    @if(containsSubmenu(item)) {
-                        {{ getItemName(item) }}
-                        <span class="material-symbols-outlined">
-                            arrow_drop_down
-                        </span>
-                    } @else {
-                        {{ getItemName(item) }}
-                        
-                    }
-                </div>
+                {{ item }}
                 }
-        } @empty {
-
-        }
+                }
+            </div>
+            }
+        </div>
+    }    
     </div>  
 </div>
-
 <div class="{{spaceBelow}}"></div>

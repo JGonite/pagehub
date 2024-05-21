@@ -1,16 +1,39 @@
-<body class="bg-bg_light text-tt_dark">
+<body class="bg-bg_light text-tt_dark font-body">
     <pghub-navbar
-        hide="static"
+        hide="STATIC"
         spaceAbove="h-0"
-        tailwindArgs="items-center justify-start h-14 mx-0 rounded-none bg-primary text-lg text-tt_light"
         spaceBelow="h-60"
-        [items]="['brand', 'Home', '[sub]Empresa e Equipe', '[sub]Catálogo', 'Orçamentos', 'Simulação', 'Contato']"
-        brandFont="font-brand"
-        brandName="pagehub"
-        navItemsTailwindArgs="mx-48 gap-10"
-        brandIconSize="24"
-        
+        navMainTailwindArgs="flex flex-row items-center h-14 mx-0 rounded-none bg-primary text-base text-tt_light"
+        navGridTailwindArgs="w-full items-center"
+        [navObjects]="[
+            {
+                deserializeType: 'BRAND',
+                tailwindArgs: '',
+                content: {
+                    name: 'pagehub',
+                    iconSize: '24'
+                }
+            },
+            {
+                deserializeType: 'LIST',
+                tailwindArgs: '',
+                content: {
+                    items: ['Home', 'Empresa e Equipe', 'Catálogo', 'Orçamentos'],
+                    subItems: {'Empresa e Equipe': ['Diferenciais', 'Experiência de Mercado', 'Resultado'], 'Catálogo': ['Tipos de páginas', 'Paletas de cores', 'Simule sua página']}
+                }
+            },
+            
+            {
+                deserializeType: 'LIST',
+                tailwindArgs:'',
+                content: {
+                    items: ['Contato'],
+                    subItems: {}
+                }
+            }
+        ]"
     ></pghub-navbar>
+
     <main class="mx-48 flex flex-col gap-60">
         <pghub-apresentacao 
         mainText="Desenvolvemos páginas para profissionais que buscam aumentar seu alcance!"
