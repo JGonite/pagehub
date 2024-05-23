@@ -1,6 +1,6 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { PgHubNavObjectList, PghubNavObject } from '../interfaces/pghub-navbar.interface';
+import { PgHubNavObjectBrand, PgHubNavObjectList, PghubNavObject } from '../interfaces/pghub-navbar.interface';
 
 type NavBarHideType = 'STATIC' | 'FIXED' | 'DYNAMIC';
 
@@ -34,20 +34,12 @@ export class PghubNavbarComponent {
   ngOnInit() : void {
   }
 
-  isBrand(navObject : PghubNavObject) : boolean {
-    return navObject.deserializeType == 'BRAND';
+  isBrand(content : PgHubNavObjectBrand | PgHubNavObjectList) : content is PgHubNavObjectBrand {
+    return content.type === 'BRAND';
   }
 
-  isList(navObject : PghubNavObject) : boolean {
-    return navObject.deserializeType == 'LIST';
-  }
-
-  containsSubmenu(navObjectListContent : PgHubNavObjectList, item : string) : boolean {
-    if (navObjectListContent.subItems !== undefined && navObjectListContent.subItems[item] !== undefined) {
-      return (navObjectListContent.subItems[item].length > 0)
-    } else {
-      return false;
-    }
+  isList(content : PgHubNavObjectBrand | PgHubNavObjectList) : content is PgHubNavObjectList {
+    return content.type === 'LIST';
   }
   
 }

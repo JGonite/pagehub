@@ -1,10 +1,10 @@
 <div class="{{spaceAbove}}"></div>
 <div class="flex flex-row {{navMainTailwindArgs}}">
-    <div class="grid grid-cols-{{navObjects.length}} w-full {{navGridTailwindArgs}}">
+    <div class="grid grid-flow-col auto-cols-auto w-full {{navGridTailwindArgs}}">
     @for (navObject of navObjects; track navObject) {
         <div class="{{navObject.tailwindArgs}}">
-            @if(isBrand(navObject)) {
-            <div class="gap-1">
+            @if(isBrand(navObject.content)) {
+            <div class="flex items-center gap-1">
                 <div>
                     <img ngSrc="{{ brandImagePath }}" width="{{navObject.content.iconSize}}" height="{{navObject.content.iconSize}}"/>
                 </div>
@@ -13,19 +13,30 @@
                 </div>
             </div>
             }
-            @else if(isList(navObject)) {
-            <div class="">
+            @else if(isList(navObject.content)) {
                 @for (item of navObject.content.items; track item) {
-                @if(containsSubmenu(navObject.content, item)) {
-                {{ item }}
-                <span class="material-symbols-outlined text-primary-300">
-                    arrow_drop_down
-                </span>
-                } @else {
-                {{ item }}
+                    @if( (navObject.content.subItems?.[item]?.length ?? 0) > 0 ) {
+                        <div class="flex items-center gap-0.5 ">
+                            {{ item }}
+                            <span class=" material-symbols-outlined text-primary-300">
+                                arrow_drop_down
+                            </span>
+                        </div>
+                    } @else {
+                        @if( (navObject.content.itemsIcons?.[item] ?? '') !== '' ) {
+                            <div [class]="'flex items-center ' + navObject.content.itemsTailwindArgs?.[item] || '' ">
+                                <span class="material-symbols-outlined text-base">
+                                    {{ navObject.content.itemsIcons?.[item] || '' }}
+                                </span>
+                                    {{ item }}
+                            </div>
+                        } @else {
+                            <div [class]="navObject.content.itemsTailwindArgs?.[item] || ''">
+                                {{ item }}
+                            </div>
+                        }
+                    }
                 }
-                }
-            </div>
             }
         </div>
     }    

@@ -3,38 +3,41 @@
         hide="STATIC"
         spaceAbove="h-0"
         spaceBelow="h-60"
-        navMainTailwindArgs="flex flex-row items-center h-14 mx-0 rounded-none bg-primary text-base text-tt_light"
-        navGridTailwindArgs="w-full items-center"
+        navMainTailwindArgs=" items-center h-14 mx-0 rounded-none bg-primary text-base text-tt_light"
+        navGridTailwindArgs=" mx-64 items-center "
         [navObjects]="[
             {
-                deserializeType: 'BRAND',
-                tailwindArgs: '',
+                tailwindArgs: 'flex flex-row text-xl',
                 content: {
+                    type: 'BRAND',
                     name: 'pagehub',
                     iconSize: '24'
                 }
             },
-            {
-                deserializeType: 'LIST',
-                tailwindArgs: '',
+            { 
+                tailwindArgs: 'flex flex-row gap-10 items-center justify-center',
                 content: {
+                    type: 'LIST',
                     items: ['Home', 'Empresa e Equipe', 'Catálogo', 'Orçamentos'],
                     subItems: {'Empresa e Equipe': ['Diferenciais', 'Experiência de Mercado', 'Resultado'], 'Catálogo': ['Tipos de páginas', 'Paletas de cores', 'Simule sua página']}
                 }
             },
             
             {
-                deserializeType: 'LIST',
-                tailwindArgs:'',
+                tailwindArgs: 'flex flex-row justify-end',
                 content: {
+                    type: 'LIST',
                     items: ['Contato'],
+                    itemsIcons: {'Contato': 'mail'},
+                    itemsTailwindArgs: {'Contato': 'flex h-full w-1/2 justify-center rounded-full bg-primary-100 text-tt_dark gap-1'},
                     subItems: {}
                 }
             }
         ]"
     ></pghub-navbar>
-
-    <main class="mx-48 flex flex-col gap-60">
+    
+    PRÓXIMO PASSO É PASSAR UMA MANEIRA DE COSTUMIZAR O TAMANHO DO ÍCONE JUNTO DE "CONTATO". ESTOU PENSANDO SE ISSO NA VERDADE NÃO DEVERIA SER UMA COSTUMIZAÇÃO MAIS GENÉRICA PARA QUALQUER TEXTO
+    <main class="mx-64 flex flex-col gap-60 w-">
         <pghub-apresentacao 
         mainText="Desenvolvemos páginas para profissionais que buscam aumentar seu alcance!"
         descriptionText="Transforme a maneira como você prospecta novos clientes"
