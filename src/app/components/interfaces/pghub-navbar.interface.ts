@@ -1,3 +1,5 @@
+import { PghubTextElement } from "./pghub-text-element.interface";
+
 type DeserializeType = 'BRAND' | 'LIST'
 
 export interface PghubNavObject {
@@ -15,6 +17,6 @@ export interface PgHubNavObjectList {
     type: 'LIST'
     items: string[];
     itemsTailwindArgs?: { [key: string]: string };
-    itemsIcons?: { [key: string]: string };
+    itemsTextElement?: { [key: string]: PghubTextElement };
     subItems?: { [key: string]: string[] };
 }

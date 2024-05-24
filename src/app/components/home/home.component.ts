@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
 import { PghubFormComponent } from '../pghub-form/pghub-form.component';
 import { PghubApresentacaoComponent } from '../pghub-apresentacao/pghub-apresentacao.component';
 import { PghubNavbarComponent } from '../pghub-navbar/pghub-navbar.component';
@@ -10,7 +9,6 @@ import { PghubNavbarComponent } from '../pghub-navbar/pghub-navbar.component';
                     // módulo importa e exporta). Declarations, Imports, Providers... Resolvíamos isso criando um app.module (
                     // significa que esse componenete não precisa ser definido no app.module
   imports: [
-    HeaderComponent,
     PghubApresentacaoComponent,
     PghubFormComponent,
     PghubNavbarComponent

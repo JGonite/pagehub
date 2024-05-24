@@ -28,7 +28,7 @@
                 content: {
                     type: 'LIST',
                     items: ['Contato'],
-                    itemsIcons: {'Contato': 'mail'},
+                    itemsTextElement: {'Contato': {icon: 'mail', tailwindArgs: 'text-base'}},
                     itemsTailwindArgs: {'Contato': 'flex h-full w-1/2 justify-center rounded-full bg-primary-100 text-tt_dark gap-1'},
                     subItems: {}
                 }
@@ -36,7 +36,7 @@
         ]"
     ></pghub-navbar>
     
-    PRÓXIMO PASSO É PASSAR UMA MANEIRA DE COSTUMIZAR O TAMANHO DO ÍCONE JUNTO DE "CONTATO". ESTOU PENSANDO SE ISSO NA VERDADE NÃO DEVERIA SER UMA COSTUMIZAÇÃO MAIS GENÉRICA PARA QUALQUER TEXTO
+    
     <main class="mx-64 flex flex-col gap-60 w-">
         <pghub-apresentacao 
         mainText="Desenvolvemos páginas para profissionais que buscam aumentar seu alcance!"
