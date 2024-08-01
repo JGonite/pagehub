@@ -1,0 +1,68 @@
+@import "../../../color-variables.scss";
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 70px;
+    background: $secondary-bg;
+    color: $white-color;
+
+    h3 {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 16px;
+        font-weight: 400;
+        text-align: justify;
+        margin-bottom: 10px;
+    }
+
+    .text {
+        flex: 1;
+    }
+
+    .pghub-form {
+        flex: 1;
+
+        form {
+            
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            input {
+                background: none;
+                border: none;
+                border-bottom: 1px solid $white-color;
+                width: 100%;
+                height: 60px;
+                margin-bottom: 40px;
+            }
+        }
+
+        .center-buttom {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+    }
+    
+    
+
+
+
+}
+
+@media (min-width: 1080px) {
+    .form-section {
+        flex-direction: row;
+        gap: 115px;
+        padding: 40px 120px;
+    }
+}

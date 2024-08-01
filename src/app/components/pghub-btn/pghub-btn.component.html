@@ -1,0 +1,14 @@
+<!-- Toda a vez que quero passar uma variável,  é necessário fazer data biding: () para funções, [] para variáveis -->
+<button (click)="submit()" 
+        [ngClass]="setClasses()"
+        [disabled]="disabled"
+        [style.border-radius]="btnRadius"
+        [style.font-size]="fontSize"
+        >
+        <span *ngIf="!loading">
+            {{ btnText }}
+        </span>
+        <span *ngIf="loading">
+            carregando... 
+        </span>
+</button>

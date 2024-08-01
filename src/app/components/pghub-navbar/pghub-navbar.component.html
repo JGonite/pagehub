@@ -1,0 +1,62 @@
+<div class="{{spaceAbove}}"></div>
+<div class="flex flex-row {{navMainTailwindArgs}}">
+    <div class="grid grid-flow-col auto-cols-auto w-full {{navGridTailwindArgs}}">
+    @for (navObject of navObjects; track navObject) {
+        
+            @if(isBrand(navObject.content)) {
+            <div class="{{navObject.tailwindArgs}}">
+                <div class="flex items-center gap-1" + navObject.content.tailwindArgs>
+                    <div>
+                        <img ngSrc="{{ navObject.content.image }}" width="{{navObject.content.imageSize}}" height="{{navObject.content.imageSize}}"/>
+                    </div>
+                    <div class="font-brand">
+                        {{ navObject.content.name }}
+                    </div>
+                </div>
+            </div>
+            }
+            @else if(isList(navObject.content)) {
+            <ul class="{{navObject.tailwindArgs}}">
+                @for (item of navObject.content.items; track item) {
+                    @if( (item.subItems?.length ?? 0) > 0 ) {
+                        <!-- Items da navbar que contêm submenu -->
+                        <li [class]="'relative flex flex-col ' + item.tailwindArgs || '' ">
+                            <div class="flex flex-row">
+                                <span [class]="'material-symbols-outlined ' + item.textElement?.tailwindArgs || ''">
+                                    {{ item.textElement?.icon ?? '' }}
+                                </span>
+                                <div [class]="item.textElement?.tailwindArgs ">
+                                    {{ item }}
+                                </div>
+                                <span class=" material-symbols-outlined text-primary-300">
+                                    arrow_drop_down
+                                </span>
+                            </div>
+                            <ul class="absolute w-64 top-10 bg-primary-300 text-tt_dark p-2">
+                                @for (subItem of item.subItems ?? []; track subItem) {
+                                <li class=" text-center items-center h-8">
+                                    {{ subItem }}
+                                </li>
+                                }
+                            </ul>
+                        </li>
+                    } @else {
+                        <!-- Items da navbar que NÃO contêm submenu -->
+                        <li [class]="'relative flex items-center ' + item.tailwindArgs  || ''" >
+                            <a href="#" [class]="'flex items-center ' + item.textElement?.iconGap || ''">
+                                <span [class]="'material-symbols-outlined ' + item.textElement?.tailwindArgs || ''">
+                                    {{ item.textElement?.icon ?? '' }}
+                                </span>
+                                <div [class]="item.textElement?.tailwindArgs || ''">
+                                    {{ item }}
+                                </div>
+                            </a>
+                        </li>
+                    }
+                }
+            </ul>
+            }
+    }    
+    </div>  
+</div>
+<div class="{{spaceBelow}}"></div>

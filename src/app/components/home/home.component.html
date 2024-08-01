@@ -1,0 +1,83 @@
+<body class="bg-bg_light text-tt_dark font-body">
+
+           <!--Continuar daqui: vamos transformar o items e subItems em um objeto só que seja iterável (novos modelos já criados)
+           Depois disso nós refatoramos todo o component.html do pghub navbar-->
+
+    <pghub-navbar
+        hide="STATIC"
+        spaceAbove="h-0"
+        spaceBelow="h-60"
+        navMainTailwindArgs=" items-center h-14 mx-0 rounded-none bg-primary text-base text-tt_light"
+        navGridTailwindArgs=" mx-64 items-center "
+        [navObjects]="[
+            {
+                tailwindArgs: 'flex flex-row text-xl',
+                content: {
+                    type: 'BRAND',
+                    name: 'pagehub',
+                    image: './assets/iconeMarca.png',
+                    imageSize: '24'
+                }
+            },
+            { 
+                tailwindArgs: 'flex flex-row gap-10 items-center justify-center',
+                content: {
+                    type: 'ITEMS',
+                    items: [
+                        {
+                            description: 'Home',
+                        }, 
+                        {
+                            description: 'Empresa e Equipe',
+                            tailwindArgs: 'items-center',
+                            subItems: [{description: 'Diferenciais'}, {description: 'Experiência de Mercado'}, {description: 'Resultado'}]
+                        }, 
+                        {
+                            description: 'Catálogo',
+                            tailwindArgs: 'items-center',
+                            subItems: [{description: 'Tipos de páginas'},{description: 'Paletas de cores'},{description: 'Simule sua página'}]
+                        }, 
+                        { 
+                            description: 'Orçamentos'
+                        }],
+                }
+            },
+            
+            {
+                tailwindArgs: 'flex flex-row justify-end',
+                content: {
+                    type: 'ITEMS',
+                    items: [{
+                        description: 'Contato',
+                        tailwindArgs: 'flex h-full w-1/2 justify-center rounded-full bg-primary-100 text-tt_dark gap-1',
+                        textElement: {icon: 'mail', iconGap: 'gap-1', tailwindArgs: 'text-base'}
+                    }],
+                }
+            }
+        ]"
+    ></pghub-navbar>
+    
+    
+    <main class="mx-64 flex flex-col gap-60 w-">
+        <pghub-apresentacao 
+        mainText="Desenvolvemos páginas para profissionais que buscam aumentar seu alcance!"
+        descriptionText="Transforme a maneira como você prospecta novos clientes"
+        buttonText="Quero uma Demonstração!"
+        buttonRadius="0px"
+        buttonFontSize="18px"
+        variant="side-image"></pghub-apresentacao>
+
+        <section class="feature1-section">
+            <div class="feature1-data">
+                <h2>75% dos clientes</h2>
+            </div>
+            <p>julgam a <b>credibilidade</b> dos serviços a eles oferecidos com base no design do website profissional. </p>
+        </section>
+        <section class="cta1-section">
+            
+        </section>
+
+        <pghub-form></pghub-form>
+
+    </main>
+</body>
